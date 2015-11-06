@@ -167,7 +167,7 @@ class Guard {
 	 * 
 	 * @param mixed  $match
 	 */
-	private function moreThan($match) {
+	private function greaterThan($match) {
 		if ( ! is_numeric($match) || ! is_numeric($this->value) || $this->value <= $match) $this->setIssue('more than');
 	}
 
@@ -176,7 +176,7 @@ class Guard {
 	 * 
 	 * @param mixed  $match
 	 */
-	private function equalOrMoreThan($match) {
+	private function equalOrGreaterThan($match) {
 		if ( ! is_numeric($match) || ! is_numeric($this->value) || $this->value < $match) $this->setIssue('equal or more than');
 	}
 
