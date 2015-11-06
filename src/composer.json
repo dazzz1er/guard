@@ -1,0 +1,22 @@
+{
+    "name": "djb/guard",
+    "description": "Swift 2 inspired guard feature for PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dan James Britchford",
+            "email": "danbritchford@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "DJB\\Guard\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    }
+}
