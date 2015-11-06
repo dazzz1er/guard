@@ -9,21 +9,21 @@ class Guard {
 	 * 
 	 * @var mixed
 	 */
-	private $value;
+	protected $value;
 
 	/**
 	 * Whether the guard has found an issue yet or not
 	 * 
 	 * @var boolean
 	 */
-	private $hasIssue = false;
+	protected $hasIssue = false;
 
 	/**
 	 * Description of issue found
 	 * 
 	 * @var string
 	 */
-	private $issue;
+	protected $issue;
 
 	function __construct($value) {
 		$this->value = $value;
@@ -56,7 +56,7 @@ class Guard {
 	 * @param  string   $method
 	 * @return boolean
 	 */
-	private function canCall($method) {
+	protected function canCall($method) {
 		return method_exists($this, $method);
 	}
 
@@ -65,7 +65,7 @@ class Guard {
 	 * 
 	 * @return boolean
 	 */
-	private function alreadyHasIssue() {
+	protected function alreadyHasIssue() {
 		return $this->hasIssue;
 	}
 
@@ -74,7 +74,7 @@ class Guard {
 	 * 
 	 * @param string  $issue
 	 */
-	private function setIssue($issue) {
+	protected function setIssue($issue) {
 		$this->hasIssue = true;
 		$this->issue = $issue;
 	}
@@ -86,7 +86,7 @@ class Guard {
 	 *
 	 * Will fail if sent a class that does not implement __toString
 	 */
-	private function exists() {
+	protected function exists() {
 		$boolOrArray = is_bool($this->value) || is_array($this->value);
 		if ( ! $boolOrArray && trim((string) $this->value) === '') $this->setIssue('exists');
 	}
@@ -94,14 +94,14 @@ class Guard {
 	/**
 	 * Run a check that the variable resolves to true
 	 */
-	private function isTrue() {
+	protected function isTrue() {
 		if ( ! is_bool($this->value) || ! $this->value) $this->setIssue('true');
 	}
 
 	/**
 	 * Run a check that the variable resolves to false
 	 */
-	private function isFalse() {
+	protected function isFalse() {
 		if ( ! is_bool($this->value) || $this->value) $this->setIssue('false');
 	}
 
@@ -110,28 +110,28 @@ class Guard {
 	 * 
 	 * @param string   $className
 	 */
-	private function isClass($className) {
+	protected function isClass($className) {
 		if ( ! is_a($this->value, $className)) $this->setIssue('is class');
 	}
 
 	/**
 	 * Run a check that the variable is numeric
 	 */
-	private function isNumeric() {
+	protected function isNumeric() {
 		if ( ! is_numeric($this->value)) $this->setIssue('is numeric');
 	}
 
 	/**
 	 * Run a check that the variable is an integer
 	 */
-	private function isInteger() {
+	protected function isInteger() {
 		if ( ! is_int($this->value)) $this->setIssue('is integer');
 	}
 
 	/**
 	 * Run a check that the variable is a string
 	 */
-	private function isString() {
+	protected function isString() {
 		if ( ! is_string($this->value)) $this->setIssue('is string');
 	}
 
@@ -140,7 +140,7 @@ class Guard {
 	 * 
 	 * @param mixed  $match
 	 */
-	private function equal($match) {
+	protected function equal($match) {
 		if ( ! $this->value === $match) $this->setIssue('equal');
 	}
 
@@ -149,7 +149,7 @@ class Guard {
 	 * 
 	 * @param mixed  $match
 	 */
-	private function lessThan($match) {
+	protected function lessThan($match) {
 		if ( ! is_numeric($match) || ! is_numeric($this->value) || $this->value >= $match) $this->setIssue('less than');
 	}
 
@@ -158,7 +158,7 @@ class Guard {
 	 * 
 	 * @param mixed  $match
 	 */
-	private function equalOrLessThan($match) {
+	protected function equalOrLessThan($match) {
 		if ( ! is_numeric($match) || ! is_numeric($this->value) || $this->value > $match) $this->setIssue('equal or less than');
 	}
 
@@ -167,7 +167,7 @@ class Guard {
 	 * 
 	 * @param mixed  $match
 	 */
-	private function greaterThan($match) {
+	protected function greaterThan($match) {
 		if ( ! is_numeric($match) || ! is_numeric($this->value) || $this->value <= $match) $this->setIssue('more than');
 	}
 
@@ -176,7 +176,7 @@ class Guard {
 	 * 
 	 * @param mixed  $match
 	 */
-	private function equalOrGreaterThan($match) {
+	protected function equalOrGreaterThan($match) {
 		if ( ! is_numeric($match) || ! is_numeric($this->value) || $this->value < $match) $this->setIssue('equal or more than');
 	}
 
