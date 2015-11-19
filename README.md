@@ -55,5 +55,3 @@ guard($var)->exists()->otherwise(function($failedCheck) {
   throw \YourAppException\ValidationError($failedCheck->message());
 });
 ```
-
-Also need to add default check methods such as email validation.
