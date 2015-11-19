@@ -84,3 +84,34 @@ protected $exceptionMessages = ['is between' => 'Make it between 12 and 24, plea
 ```
 
 would override the `between($min, $max)` validation method's error message.
+
+## validation methods
+
+You can check if the variable:
+
+* **`exists`** - exists (if the var has length, or is a `bool` or `array`)
+* **`isTrue`** - evaluates to bool `true`
+* **`isFalse`** - evaluates to bool `false`
+* **`isDate`** - is in a valid date format
+* **`isClass($className)`** - is an instance of class `$className`
+* **`isArray`** - is an `array`
+* **`isInteger`** - is an `integer`
+* **`isString`** - is a `string`
+* **`isAlpha`** - contains only alphabetic characters
+* **`isNumeric`** - contains only numeric characters
+* **`isEmailAddress`** - is in email address format
+* **`isURL`** - is a URL
+* **`isActiveURL`** - is an URL which can be reached (i.e. website is live)
+* **`isJSON`** - is a valid JSON string
+* **`isIP`** - is IP address format
+* **`length($length)`** - is the length specified
+* **`in(Array $acceptable)`** - is one of the accepted values
+* **`notIn(Array $excluded)`** - is not one of the excluded values
+* **`after($date)`** - is after the provided date (can be a date format string, or an instance of `DateTime`)
+* **`before($date)`** - is before the provided date (can be a date format string, or an instance of `DateTime`)
+* **`between($min, $max)`** - is between the `$min` and `$max` values (can be a date format string, instance of `DateTime` or numbers)
+* **`equal($value)`** - is equal to the provided value (number, string)
+* **`lessThan($value)`** - is less than the provided value (number)
+* **`greaterThan($value)`** - is greater than the provided value (number)
+* **`equalOrLessThan($value)`** - is equal or less than the provided value (number)
+* **`equalOrGreaterThan($value)`** - is equal or greater than the provided value (number)
